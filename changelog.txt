@@ -1,0 +1,4 @@
+V 0.4
+added
+	test - valgrind test
+	OUT - output name variable
