@@ -1,4 +1,4 @@
-# universal Makefile V 0.4
+# universal Makefile V 0.5
 # Piotr Kolecki
 
 CXX = g++
@@ -42,3 +42,12 @@ run : $(OUT)
 	./$(OUT)
 test : $(OUT)
 	valgrind --leak-check=full ./$(OUT)
+class : 
+	@read -p "" CLS; \
+	touch $$CLS.h touch $$CLS.cpp; \
+	echo "#pragma once\n" > $$CLS.h; \
+	echo "class $$CLS {" >> $$CLS.h; \
+	echo "	public :\n	\n" >> $$CLS.h; \
+	echo "	private :\n	" >> $$CLS.h; \
+	echo "};" >> $$CLS.h; \
+	echo "#include \"$$CLS.h\"" > $$CLS.cpp; \
