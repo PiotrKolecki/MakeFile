@@ -2,6 +2,12 @@ V 0.4
 added
 	test - valgrind test
 	OUT - output name variable
+
 V 0.5
 added
 	class - class generator
+	
+	V 0.5.1
+		bugfix
+			- a file named "touch" was created every time new class was creted
+		added "insert class name" information at creating class

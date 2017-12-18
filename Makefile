@@ -1,4 +1,4 @@
-# universal Makefile V 0.5
+# universal Makefile V 0.5.1
 # Piotr Kolecki
 
 CXX = g++
@@ -18,7 +18,7 @@ $(OUT) : $(OBJ)
 %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-.PHONY : all release backup clear run test
+.PHONY : all release backup clear run test class
 .SILENT : release
 
 release : all
@@ -43,11 +43,12 @@ run : $(OUT)
 test : $(OUT)
 	valgrind --leak-check=full ./$(OUT)
 class : 
+	@echo "insert class name"
 	@read -p "" CLS; \
-	touch $$CLS.h touch $$CLS.cpp; \
+	touch $$CLS.h $$CLS.cpp; \
 	echo "#pragma once\n" > $$CLS.h; \
-	echo "class $$CLS {" >> $$CLS.h; \
-	echo "	public :\n	\n" >> $$CLS.h; \
-	echo "	private :\n	" >> $$CLS.h; \
+	echo "class $$CLS {\n	" >> $$CLS.h; \
+	echo "	private :\n		" >> $$CLS.h; \
+	echo "	public :\n		" >> $$CLS.h; \
 	echo "};" >> $$CLS.h; \
 	echo "#include \"$$CLS.h\"" > $$CLS.cpp; \
